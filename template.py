@@ -12,6 +12,6 @@ gi = GalaxyInstance(url=galaxy_url, key=api_key)
 new_history = gi.histories.create_history(name="Template")
 
 # search for a specific metagenomics tool
-tools = gi.tools.get_tools(name="Kraken2")
+tools = gi.tools.get_tools(name="Tool")
 if tools:
     print(f"Found tool: {tools[0]['name']} (ID: {tools[0]['id']})")
