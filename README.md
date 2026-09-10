@@ -1,4 +1,4 @@
-# Galaxy Training
+# Introduction to Galaxy and Sequence Analysis
 
 ## A short introduction to Galaxy
 
@@ -23,3 +23,18 @@ To filter low quality reads
 | --- | --- |
 | Quality cutoff | Minimum quality per base in a sequence |
 | Min percentage | Minimum percentage of bases in a sequence that meets the quality cutoff value |
+
+
+## Galaxy Basics for genomics
+
+
+## Quality Control
+
+
+## Mapping
+
+
+## An Introduction to Genome Assembly
+
+
+## Chloroplast Genome Assembly
