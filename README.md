@@ -1,8 +1,9 @@
 # Introduction to Galaxy and Sequence Analysis
+This is a learning pathways from Galaxy Training and below are the tools and their respective documentation following the structure of the course.
 
 ## A short introduction to Galaxy
 
-#### **1. FastQC & Falco**
+#### **`FastQC & Falco`**
 To perform high throughput quality check
 | Summary | Discription |
 | --- | --- |
@@ -17,7 +18,7 @@ To perform high throughput quality check
 | Overrepresented sequences | Overreprented sequences |
 | Adapter Content | Percentage of adapter content across the sequence |
 
-#### **2. Filter by quality**
+#### **`Filter by quality`**
 To filter low quality reads
 | Parameter | Discription |
 | --- | --- |
