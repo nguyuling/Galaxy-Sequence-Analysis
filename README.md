@@ -1,6 +1,6 @@
-# Galaxy
+# Galaxy Training
 
-### Galaxy Training
+## A short introduction to Galaxy
 
 #### **1. FastQC & Falco**
 To perform high throughput quality check
