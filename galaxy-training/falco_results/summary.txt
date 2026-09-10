@@ -1,0 +1,10 @@
+PASS	Basic Statistics	mutant_R1.fastq
+PASS	Per base sequence quality	mutant_R1.fastq
+PASS	Per sequence quality scores	mutant_R1.fastq
+PASS	Per base sequence content	mutant_R1.fastq
+PASS	Per sequence GC content	mutant_R1.fastq
+PASS	Per base N content	mutant_R1.fastq
+PASS	Sequence Length Distribution	mutant_R1.fastq
+PASS	Sequence Duplication Levels	mutant_R1.fastq
+PASS	Overrepresented sequences	mutant_R1.fastq
+PASS	Adapter Content	mutant_R1.fastq
