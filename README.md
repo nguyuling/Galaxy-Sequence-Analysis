@@ -3,7 +3,7 @@ This is a learning pathways from Galaxy Training and below are the tools and the
 
 ## A short introduction to Galaxy
 
-#### **`FastQC & Falco`**
+#### `FastQC & Falco`
 To perform high throughput quality check
 | Summary | Discription |
 | --- | --- |
@@ -18,7 +18,7 @@ To perform high throughput quality check
 | Overrepresented sequences | Overreprented sequences |
 | Adapter Content | Percentage of adapter content across the sequence |
 
-#### **`Filter by quality`**
+#### `Filter by quality`
 To filter low quality reads
 | Parameter | Discription |
 | --- | --- |
@@ -26,7 +26,16 @@ To filter low quality reads
 | Min percentage | Minimum percentage of bases in a sequence that meets the quality cutoff value |
 
 
-## Galaxy Basics for genomics
+## Galaxy Basics for Genomics
+
+#### `bedtools Intersect intervals`
+To find overlapping intervals in various ways
+
+| Parameter | Description |
+| --- | --- |
+| Combined or separate output files | To save intersect data in a single file or one for each intersection |
+| Calculation based on strandedness? | Can choose to restrict to overlap occuring on the same or opposite or either strand |
+| What should be written to the output file? | Whether columns in file a or file b or both is prioritize and whether to set non-intersect row with null |
 
 
 ## Quality Control
