@@ -2,9 +2,12 @@
 This is a learning pathways from Galaxy Training and below are the tools and their respective documentation following the structure of the course.
 
 ## A short introduction to Galaxy
+Given 12480 short sequence reads (in .fastq), generate a sequence quality report and filter out low quality reads
 
-#### `FastQC & Falco`
-To perform high throughput quality check
+1. Quality report
+- using `fastqc` and/or `falco` to perform high throughput quality check
+- the contents of the report are as follow:
+
 | Summary | Discription |
 | --- | --- |
 | Basic Statistics | Total sequences, total bases (per sequence), sequence length (eg. 150 or 200), %GC |
@@ -18,16 +21,17 @@ To perform high throughput quality check
 | Overrepresented sequences | Overreprented sequences |
 | Adapter Content | Percentage of adapter content across the sequence |
 
-#### `Filter by quality`
-To filter low quality reads
-| Parameter | Discription |
-| --- | --- |
-| Quality cutoff | Minimum quality per base in a sequence |
-| Min percentage | Minimum percentage of bases in a sequence that meets the quality cutoff value |
+2. Filter low quality reads 
+```bash
+fastq_quality_filter -q 35 -p 80 -Q33 -v -i "$FASTQ" -o "$FASTQ_FILTERED"
+```
+- `-q 35` 35 is the minimum quality score required of each base in a sequence 
+- `-p 80` At least 80% of the bases in a sequence must have quality >= -q or else is filtered out as low-quality reads
+- `-Q33` specifies Sanger Phred+33 quality score encoding
 
 
 ## Galaxy Basics for Genomics
-Given datasets containing a list of exons in chromosome 12 and list of SNPs (single sequnece polymorphisms) in the same chromosome, find the top 5 exons that has the most number of SNPs.
+Given datasets containing a list of exons (protein coding region) in chromosome 22 and a list of SNPs (single sequnece polymorphisms) known to exist in the same chromosome, find the top 5 exons that has the most number of SNPs.
 
 1. Define the pathname (repo/root, dataset and output files)
 
@@ -71,11 +75,11 @@ awk 'NR==FNR {ids[$1]; next} $4 in ids' "$TOP5_EXONS_SNPS_COUNTS" "$EXONS" > "$T
 
 | Chromosome | Starting base pair | Ending base pair | Exon ID | No. of SNPs |
 | --- | --- | --- | --- | --- |
-| chr22	| 22514001 | 22515630 | ENST00000302097.3_cds_0_0_chr22_22514002_r | 27 |
-| chr22	| 31712082 | 31717291 | ENST00000327423.11_cds_5_0_chr22_31712083_r | 26 |
-| chr22	| 46256560 | 46263322 | ENST00000253255.7_cds_0_0_chr22_46256561_r | 20 |
-| chr22	| 49883662 | 49887178 | ENST00000216268.6_cds_1_0_chr22_49883663_f | 14 |
-| chr22	 |50546243 | 50549951 | ENST00000648057.3_cds_0_0_chr22_50546244_f | 13 |
+| chr22	| 46256560 | 46263322 | ENST00000253255.7_cds_0_0_chr22_46256561_r | 27 |
+| chr22	| 50546243 | 50549951 | ENST00000648057.3_cds_0_0_chr22_50546244_f | 26 |
+| chr22	| 31712082 | 31717291 | ENST00000327423.11_cds_5_0_chr22_31712083_r | 20 |
+| chr22	| 22514001 | 22515630 | ENST00000302097.3_cds_0_0_chr22_22514002_r | 14 |
+| chr22	| 49883662 | 49887178 | ENST00000216268.6_cds_1_0_chr22_49883663_f | 13 |
 
 ## Quality Control
 
