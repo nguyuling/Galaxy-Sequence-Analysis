@@ -26,12 +26,12 @@ Given 12480 short sequence reads (in .fastq), generate a sequence quality report
 fastq_quality_filter -q 35 -p 80 -Q33 -v -i "$FASTQ" -o "$FASTQ_FILTERED"
 ```
 - `-q 35` 35 is the minimum quality score required of each base in a sequence 
-- `-p 80` At least 80% of the bases in a sequence must have quality >= -q or else is filtered out as low-quality reads
+- `-p 80` At least 80% of the bases in a sequence must have quality >= -q or else the sequence is filtered out as low-quality read
 - `-Q33` specifies Sanger Phred+33 quality score encoding
 
 
 ## Galaxy Basics for Genomics
-Given datasets containing a list of exons (protein coding region) in chromosome 22 and a list of SNPs (single sequnece polymorphisms) known to exist in the same chromosome, find the top 5 exons that has the most number of SNPs.
+Given datasets containing a list of exons (protein coding region) in chromosome 22 and a list of SNPs (single nucleotide polymorphisms) known to exist in the same chromosome, find the top 5 exons that has the most number of SNPs.
 
 1. Define the pathname (repo/root, dataset and output files)
 
