@@ -1,2 +1,0 @@
-Sample	Reads passing filters
-A3_R1	812.0
