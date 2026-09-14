@@ -1,0 +1,2 @@
+Sample	cutadapt_version	r_processed	r_with_adapters	r_too_short	r_written	bp_processed	quality_trimmed	bp_written	percent_trimmed
+A3_R1	5.2	812	461	0	812	240352	84277	116483	51.536496471841296

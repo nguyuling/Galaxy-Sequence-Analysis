@@ -1,5 +1,5 @@
 This is cutadapt 5.2 with Python 3.13.2
-Command line parameters: -q 20 -m 20 -o /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control/GSM461178_1_trimmed.fastq -p /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control/GSM461178_2_trimmed.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/461178/GSM461178_untreat_paired_subset_1.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/461178/GSM461178_untreat_paired_subset_2.fastq
+Command line parameters: -q 20 -m 20 -o /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/461178/GSM461178_R1_trimmed.fastq -p /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/461178/GSM461178_R2_trimmed.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/461178/GSM461178_R1.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/461178/GSM461178_R2.fastq
 Processing paired-end reads on 1 core ...
 
 === Summary ===

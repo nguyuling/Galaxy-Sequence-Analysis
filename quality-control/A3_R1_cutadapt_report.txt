@@ -1,5 +1,5 @@
 This is cutadapt 5.2 with Python 3.13.2
-Command line parameters: -a CTGTCTCTTATACACATCT -q 20 -m 20 -o /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control/female_oral2_trimmed.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/female_oral2.fastq
+Command line parameters: -a CTGTCTCTTATACACATCT -q 20 -m 20 -o /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/3977236/A3_R1_trimmed.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/3977236/A3_R1.fastq
 Processing single-end reads on 1 core ...
 
 === Summary ===

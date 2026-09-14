@@ -1,0 +1,4 @@
+Sample	Top overrepresented sequence	Sum of remaining overrepresented sequences
+A3_R1	5.665024630541872	94.33497536945814
+GSM461178_R1	0.0	0.0
+GSM461178_R2	0.0	0.0

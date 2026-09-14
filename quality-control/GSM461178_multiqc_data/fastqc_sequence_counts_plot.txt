@@ -1,0 +1,4 @@
+Sample	Unique Reads	Duplicate Reads
+A3_R1	300.0	512.0
+GSM461178_R1	91202.0	8798.0
+GSM461178_R2	92738.0	7262.0
