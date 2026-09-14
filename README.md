@@ -82,7 +82,17 @@ awk 'NR==FNR {ids[$1]; next} $4 in ids' "$TOP5_EXONS_SNPS_COUNTS" "$EXONS" > "$T
 | chr22	| 49883662 | 49887178 | ENST00000216268.6_cds_1_0_chr22_49883663_f | 13 |
 
 ## Quality Control
+1. Single-end short reads fastq
+- using `fastqe` generates max / mean / min quality score of each base position across all sequences in **emoji** instead of usual score in ASCII code.
+- using `fastqc` to generate quality report
+- using `cutadapt` to trim adapters and filter out the low-quality base pairs
 
+2. Paired-end short reads fastq
+- using `fastqc` to generate qc raw data of both forward and reverse sequence, usually qc(forward) > qc(reverse)
+- using `multiqc` to generate qc report using the raw data files above
+- using `cutadapt` to trim adapters (forward and reverse have different adapters), trimmed fastq of both fastq have to be of the same bps for each sequence.
+
+3. Long reads fastq
 
 ## Mapping
 
