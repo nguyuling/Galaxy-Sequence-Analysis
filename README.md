@@ -5,7 +5,12 @@ This is a learning pathways from Galaxy Training and below are the tools and the
 Given 12480 short sequence reads (in .fastq), generate a sequence quality report and filter out low quality reads
 
 1. Quality report
-- using `fastqc` and/or `falco` to perform high throughput quality check
+- using `fastqc` and/or `falco` to perform high throughput quality check:
+```bash
+fastqc "$FASTQ" --outdir="$OUTPUT_DIR"
+falco -o "$OUTPUT_DIR" "$FASTQ"
+```
+
 - the contents of the report are as follow:
 
 | Summary | Discription |
@@ -22,12 +27,10 @@ Given 12480 short sequence reads (in .fastq), generate a sequence quality report
 | Adapter Content | Percentage of adapter content across the sequence |
 
 2. Filter low quality reads 
+Low-quality reads can be filtered by the base quality score (q) and percentage of bases in a sequence that has >= q.
 ```bash
 fastq_quality_filter -q 35 -p 80 -Q33 -v -i "$FASTQ" -o "$FASTQ_FILTERED"
 ```
-- `-q 35` 35 is the minimum quality score required of each base in a sequence 
-- `-p 80` At least 80% of the bases in a sequence must have quality >= -q or else the sequence is filtered out as low-quality read
-- `-Q33` specifies Sanger Phred+33 quality score encoding
 
 
 ## Galaxy Basics for Genomics

@@ -12,3 +12,6 @@ falco -o "$OUTPUT_DIR" "$FASTQ"
 
 # 2. filter low-quality reads
 fastq_quality_filter -q 35 -p 80 -Q33 -v -i "$FASTQ" -o "$FASTQ_FILTERED"
+# -q 35 is the minimum quality score required of each base in a sequence 
+# -p 80 At least 80% of the bases in a sequence must have quality >= -q or else the sequence is filtered out as low-quality read
+# -Q33 specifies Sanger Phred+33 quality score encoding
