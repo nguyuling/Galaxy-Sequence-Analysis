@@ -33,45 +33,42 @@ fastq_quality_filter -q 35 -p 80 -Q33 -v -i "$FASTQ" -o "$FASTQ_FILTERED"
 ## Galaxy Basics for Genomics
 Given datasets containing a list of exons (protein coding region) in chromosome 22 and a list of SNPs (single nucleotide polymorphisms) known to exist in the same chromosome, find the top 5 exons that has the most number of SNPs.
 
-1. Define the pathname (repo/root, dataset and output files)
+0. Define pathname
+```bash
+EXONS="$REPO/datasets/4104428/UCSC-hg38-chr22-Coding-Exons.bed"
+SNPS="$REPO/datasets/4104428/UCSC-hg38-chr22-dbSNP153-Whole-Gene-SNPs.bed"
 
-2. Left join file a and b
+INTERSECT="$REPO/basics-genomics/exon_snps_intersect.bed"
+SNPS_COUNTS="$REPO/basics-genomics/snps_counts_per_exon.bed"
+SNPS_COUNTS_SORTED="$REPO/basics-genomics/snps_counts_per_exon_sorted.bed"
+TOP5_EXONS_SNPS_COUNTS="$REPO/basics-genomics/top5_exons_snps_counts.bed"
+TOP5_EXONS="$REPO/basics-genomics/top5_exons.bed"
+```
+
+1. Find intersection between the list of exons and SNPs
 ```bash
 bedtools intersect -a "$EXONS" -b "$SNPS" -wa -wb > "$INTERSECT"
 ```
-- `-wa` write the record from exons (file a)
-- `-wb` append the overlapping record from snps (file b) to the output file.
 
-3. Group the column by exon ID, then count the number of snps per exon. 
+2. Group by exon ID, then count the number of snps per exon
 ```bash
 datamash -s -g 4 countunique 10 < "$INTERSECT" > "$SNPS_COUNTS"
 ```
-- `-s` sort the input by the grouping column exon id (required)
-- `-g 4` group records based on the exon id (column 4)
-- `countunique 10` count number of snps (column 10) per exon
 
-4. Sort the exon snps count by number of snps in ascending order.
+3. Sort the exon SNPs count by number of snps in ascending order
 ```bash
 sort -k2,2rn "$SNPS_COUNTS" > "$SNPS_COUNTS_SORTED"
 ```
-- `-k2,2` sort by key snps count (column 2)
-- `r` reverse the sort order to descending
-- `n` use numeric sorting
 
-5. Filter the top 5 records of exon
+4. Filter only the top 5 exons
 ```bash
 head -n 5 "$SNPS_COUNTS_SORTED" > "$TOP5_EXONS_SNPS_COUNTS"
-```
-- `-n 5` extract top 5 lines of records 
+``` 
 
-6. Cross referencing
+5. Cross referencing to recover the exons' data 
 ```bash
 awk 'NR==FNR {ids[$1]; next} $4 in ids' "$TOP5_EXONS_SNPS_COUNTS" "$EXONS" > "$TOP5_EXONS"
 ```
-- `NR==FNR` number of records (cumulative records across files) only equal to file number of records (reset to 1 when reading a new file) when reading file 1
-- `ids[$1]` at file 1, take the exon id (column 1) as the key in a hash map
-- `next` skip the rest of the file and move to next line, to avoid running the script on the rest of the columns
-- `$4 in ids` once NR!=FNR when moving to file 2, check if the exon id (column 4) exists in hash map, if yes then write to output file
 
 | Chromosome | Starting base pair | Ending base pair | Exon ID | No. of SNPs |
 | --- | --- | --- | --- | --- |
