@@ -1,0 +1,94 @@
+This is cutadapt 5.2 with Python 3.13.2
+Command line parameters: -a CTGTCTCTTATACACATCT -q 20 -m 20 -o /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control/female_oral2_trimmed.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/datasets/female_oral2.fastq
+Processing single-end reads on 1 core ...
+
+=== Summary ===
+
+Total reads processed:                     812
+Reads with adapters:                       461 (56.8%)
+
+== Read fate breakdown ==
+Reads that were too short:                   0 (0.0%)
+Reads written (passing filters):           812 (100.0%)
+
+Total basepairs processed:       240,352 bp
+Quality-trimmed:                  84,277 bp (35.1%)
+Total written (filtered):        116,483 bp (48.5%)
+
+=== Adapter 1 ===
+
+Sequence: CTGTCTCTTATACACATCT; Type: regular 3'; Length: 19; Trimmed: 461 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 0.0%
+  C: 0.0%
+  G: 100.0%
+  T: 0.0%
+  none/other: 0.0%
+WARNING:
+    The adapter is preceded by 'G' extremely often.
+    The provided adapter sequence could be incomplete at its 5' end.
+    Ignore this warning when trimming primers.
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+70	1	0.0	1	1
+74	6	0.0	1	5 1
+75	2	0.0	1	1 1
+76	56	0.0	1	51 5
+77	82	0.0	1	79 3
+78	62	0.0	1	55 7
+79	42	0.0	1	39 3
+80	23	0.0	1	23
+81	30	0.0	1	27 3
+82	34	0.0	1	34
+83	14	0.0	1	13 1
+84	10	0.0	1	10
+85	15	0.0	1	15
+86	9	0.0	1	9
+87	8	0.0	1	7 1
+88	5	0.0	1	4 1
+89	7	0.0	1	6 1
+90	4	0.0	1	3 1
+91	2	0.0	1	2
+92	5	0.0	1	4 1
+93	5	0.0	1	5
+94	2	0.0	1	2
+95	6	0.0	1	6
+97	1	0.0	1	1
+98	2	0.0	1	2
+99	1	0.0	1	1
+101	1	0.0	1	1
+102	2	0.0	1	1 1
+105	1	0.0	1	1
+113	1	0.0	1	1
+121	1	0.0	1	1
+125	1	0.0	1	1
+128	1	0.0	1	1
+137	1	0.0	1	1
+140	1	0.0	1	1
+143	1	0.0	1	1
+153	1	0.0	1	1
+159	1	0.0	1	1
+174	1	0.0	1	1
+185	1	0.0	1	1
+188	1	0.0	1	1
+198	1	0.0	1	0 1
+200	1	0.0	1	1
+209	1	0.0	1	0 1
+212	1	0.0	1	1
+214	1	0.0	1	1
+223	1	0.0	1	1
+236	1	0.0	1	1
+251	1	0.0	1	1
+266	1	0.0	1	1
+267	2	0.0	1	2
+
+
+WARNING:
+    One or more of your adapter sequences may be incomplete.
+    Please see the detailed output above.
