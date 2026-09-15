@@ -5,12 +5,7 @@ This is a learning pathways from Galaxy Training and below are the tools and the
 Given 12480 short sequence reads (in .fastq), generate a sequence quality report and filter out low quality reads
 
 1. Quality report
-- using `fastqc` and/or `falco` to perform high throughput quality check:
-```bash
-fastqc "$FASTQ" --outdir="$OUTPUT_DIR"
-falco -o "$OUTPUT_DIR" "$FASTQ"
-```
-
+- using `fastqc` and/or `falco` to perform high throughput quality check
 - the contents of the report are as follow:
 
 | Summary | Discription |
@@ -28,50 +23,21 @@ falco -o "$OUTPUT_DIR" "$FASTQ"
 
 2. Filter low quality reads 
 Low-quality reads can be filtered by the base quality score (q) and percentage of bases in a sequence that has >= q.
-```bash
-fastq_quality_filter -q 35 -p 80 -Q33 -v -i "$FASTQ" -o "$FASTQ_FILTERED"
-```
-
 
 ## Galaxy Basics for Genomics
 Given datasets containing a list of exons (protein coding region) in chromosome 22 and a list of SNPs (single nucleotide polymorphisms) known to exist in the same chromosome, find the top 5 exons that has the most number of SNPs.
 
 0. Define pathname
-```bash
-EXONS="$REPO/datasets/4104428/UCSC-hg38-chr22-Coding-Exons.bed"
-SNPS="$REPO/datasets/4104428/UCSC-hg38-chr22-dbSNP153-Whole-Gene-SNPs.bed"
-
-INTERSECT="$REPO/basics-genomics/exon_snps_intersect.bed"
-SNPS_COUNTS="$REPO/basics-genomics/snps_counts_per_exon.bed"
-SNPS_COUNTS_SORTED="$REPO/basics-genomics/snps_counts_per_exon_sorted.bed"
-TOP5_EXONS_SNPS_COUNTS="$REPO/basics-genomics/top5_exons_snps_counts.bed"
-TOP5_EXONS="$REPO/basics-genomics/top5_exons.bed"
-```
 
 1. Find intersection between the list of exons and SNPs
-```bash
-bedtools intersect -a "$EXONS" -b "$SNPS" -wa -wb > "$INTERSECT"
-```
 
 2. Group by exon ID, then count the number of snps per exon
-```bash
-datamash -s -g 4 countunique 10 < "$INTERSECT" > "$SNPS_COUNTS"
-```
 
 3. Sort the exon SNPs count by number of snps in ascending order
-```bash
-sort -k2,2rn "$SNPS_COUNTS" > "$SNPS_COUNTS_SORTED"
-```
 
 4. Filter only the top 5 exons
-```bash
-head -n 5 "$SNPS_COUNTS_SORTED" > "$TOP5_EXONS_SNPS_COUNTS"
-``` 
 
 5. Cross referencing to recover the exons' data 
-```bash
-awk 'NR==FNR {ids[$1]; next} $4 in ids' "$TOP5_EXONS_SNPS_COUNTS" "$EXONS" > "$TOP5_EXONS"
-```
 
 | Chromosome | Starting base pair | Ending base pair | Exon ID | No. of SNPs |
 | --- | --- | --- | --- | --- |
@@ -83,21 +49,21 @@ awk 'NR==FNR {ids[$1]; next} $4 in ids' "$TOP5_EXONS_SNPS_COUNTS" "$EXONS" > "$T
 
 ## Quality Control
 1. Single-end short reads fastq
-- using `fastqe` generates max / mean / min quality score of each base position across all sequences in **emoji** instead of usual score in ASCII code.
-- using `fastqc` to generate quality report
-- using `cutadapt` to trim adapters and filter out the low-quality base pairs
+- using **`fastqe`** generates max / mean / min quality score of each base position across all sequences in **emoji** instead of usual score in ASCII code.
+- using **`fastqc`** to generate quality report
+- using **`cutadapt`** to trim adapters and filter out the low-quality base pairs
 
 2. Paired-end short reads fastq
-- using `fastqc` to generate qc raw data of both forward and reverse sequence, usually qc(forward) > qc(reverse)
-- using `multiqc` to generate qc report using the raw data files above
-- using `cutadapt` to trim adapters (forward and reverse have different adapters), trimmed fastq of both fastq have to be of the same bps for each sequence.
+- using **`fastqc`** to generate qc raw data of both forward and reverse sequence, usually qc(forward) > qc(reverse)
+- using **`multiqc`** to generate qc report using the raw data files above
+- using **`cutadapt`** to trim adapters (forward and reverse have different adapters), trimmed fastq of both fastq have to be of the same bps for each sequence.
 
 3. Long reads fastq
-- using `nanoplot` to generate qc report of the reads
+- using `**nanoplot`** to generate qc report of the reads
 
 4. Nanopore reads 
 - long sequence produced by changes in electrical current through microscopic pores.
-- using `pycoqc` to generate qc report
+- using **`pycoqc`** to generate qc report
 
 ## Mapping
 
