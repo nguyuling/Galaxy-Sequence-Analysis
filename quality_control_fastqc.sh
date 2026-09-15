@@ -38,6 +38,4 @@ fastqe "$FASTQ_TRIMMED" --output "$FASTQE_TRIMMED"
 # 5. clean up downloaded fastq
 rm -f \
     "$FASTQ_LOCAL" \
-    "$FASTQ_TRIMMED" \
-    "$REPO/female_oral2.fastq-4143_fastqc.zip" \
-    "$REPO/female_oral2.fastq-4143_fastqc.html"
+    "$FASTQ_TRIMMED"
