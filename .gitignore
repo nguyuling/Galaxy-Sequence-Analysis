@@ -19,4 +19,5 @@ quality_control_pycoqc/
 # Ignore large sequencing datasets
 *.fastq
 *.fastq.gz
-*.txt
+*.html
+*.zip
