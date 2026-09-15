@@ -1,0 +1,15 @@
+2026-09-15 11:57:47,251 NanoPlot 1.48.0 started with arguments Namespace(threads=4, verbose=False, store=False, raw=False, huge=False, outdir='/Users/nguyuling/Galaxy-Sequence-Analysis/quality_control_nanoplot', no_static=True, prefix='', tsv_stats=False, only_report=False, info_in_report=False, include_js=False, maxlength=None, minlength=None, drop_outliers=False, downsample=None, loglength=False, percentqual=False, alength=False, minqual=None, runtime_until=None, readtype='1D', barcoded=False, no_supplementary=False, color='#4CB391', colormap='Greens', format=['png'], plots=['dot', 'kde'], legacy=None, listcolors=False, listcolormaps=False, no_N50=False, N50=True, title=None, font_scale=1, dpi=300, hide_stats=False, fastq=['/Users/nguyuling/Galaxy-Sequence-Analysis/quality_control_nanoplot/m64011_190830_220126.Q20.subsample.fastq'], fasta=None, fastq_rich=None, fastq_minimal=None, summary=None, bam=None, ubam=None, cram=None, pickle=None, feather=None, path='/Users/nguyuling/Galaxy-Sequence-Analysis/quality_control_nanoplot/')
+2026-09-15 11:57:47,251 Python version is: 3.13.2 | packaged by conda-forge | (main, Feb 17 2025, 14:02:48) [Clang 18.1.8 ]
+2026-09-15 11:58:04,215 Nanoget: Gathered all metrics of 50000 reads
+2026-09-15 11:58:04,237 Calculated statistics
+2026-09-15 11:58:04,238 Using sequenced read lengths for plotting.
+2026-09-15 11:58:04,239 NanoPlot:  Valid color #4CB391.
+2026-09-15 11:58:04,239 NanoPlot:  Valid colormap Greens.
+2026-09-15 11:58:04,241 NanoPlot:  Creating length plots for Read length.
+2026-09-15 11:58:04,241 NanoPlot: Using 50000 reads with read length N50 of 18562bp and maximum of 37309bp.
+2026-09-15 11:58:04,341 NanoPlot: Creating yield by minimal length plot for Read length.
+2026-09-15 11:58:04,473 Created length plots
+2026-09-15 11:58:04,473 NanoPlot: Creating Read lengths vs Average read quality plots using 50000 reads.
+2026-09-15 11:58:04,541 Created LengthvsQual plot
+2026-09-15 11:58:04,541 Writing html report.
+2026-09-15 11:58:04,569 Finished!
