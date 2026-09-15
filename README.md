@@ -93,6 +93,11 @@ awk 'NR==FNR {ids[$1]; next} $4 in ids' "$TOP5_EXONS_SNPS_COUNTS" "$EXONS" > "$T
 - using `cutadapt` to trim adapters (forward and reverse have different adapters), trimmed fastq of both fastq have to be of the same bps for each sequence.
 
 3. Long reads fastq
+- using `nanoplot` to generate qc report of the reads
+
+4. Nanopore reads 
+- long sequence produced by changes in electrical current through microscopic pores.
+- using `pycoqc` to generate qc report
 
 ## Mapping
 
