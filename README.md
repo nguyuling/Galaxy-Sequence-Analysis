@@ -59,7 +59,7 @@ Given datasets containing a list of exons (protein coding region) in chromosome 
 - using **`cutadapt`** to trim adapters (forward and reverse have different adapters), trimmed fastq of both fastq have to be of the same bps for each sequence.
 
 3. Long reads fastq
-- using `**nanoplot`** to generate qc report of the reads
+- using **`nanoplot`** to generate qc report of the reads
 
 4. Nanopore reads 
 - long sequence produced by changes in electrical current through microscopic pores.
