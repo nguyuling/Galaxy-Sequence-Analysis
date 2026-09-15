@@ -1,0 +1,21 @@
+This is cutadapt 5.2 with Python 3.13.2
+Command line parameters: -q 20 -m 20 -o /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-multiqc/R1_trimmed.fastq -p /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-multiqc/R2_trimmed.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-multiqc/R1.fastq /Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-multiqc/R2.fastq
+Processing paired-end reads on 1 core ...
+
+=== Summary ===
+
+Total read pairs processed:            100,000
+
+== Read fate breakdown ==
+Pairs that were too short:               1,376 (1.4%)
+Pairs written (passing filters):        98,624 (98.6%)
+
+Total basepairs processed:     7,400,000 bp
+  Read 1:     3,700,000 bp
+  Read 2:     3,700,000 bp
+Quality-trimmed:                 182,802 bp (2.5%)
+  Read 1:        44,164 bp
+  Read 2:       138,638 bp
+Total written (filtered):      7,159,132 bp (96.7%)
+  Read 1:     3,616,660 bp
+  Read 2:     3,542,472 bp
