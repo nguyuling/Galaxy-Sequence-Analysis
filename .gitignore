@@ -3,3 +3,7 @@
 .DS_Storequality_control_nanoplot/
 quality_control_pycoqc/
 *.fastq
+quality_control_nanoplot/
+quality_control_pycoqc/
+*.fastq
+*.fastq.gz
