@@ -1,23 +1,4 @@
 .venv/
 .env
 .DS_Store
-quality_control_nanoplot/
-quality_control_pycoqc/
-*.fastq
-quality_control_nanoplot/
-quality_control_pycoqc/
-*.fastq
-*.fastq.gz
-*.fastq
-*.fastq.gz
-quality_control_nanoplot/
-quality_control_pycoqc/
-# Ignore output directories
-quality_control_nanoplot/
-quality_control_pycoqc/
-
-# Ignore large sequencing datasets
-*.fastq
-*.fastq.gz
 *.html
-*.zip
