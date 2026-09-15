@@ -1,3 +1,0 @@
-Module	Section	Sample Name	Source
-FastQC	all_sections	GSM461178_R1	/Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-multiqc/GSM461178_R1_fastqc.zip
-FastQC	all_sections	GSM461178_R2	/Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-multiqc/GSM461178_R2_fastqc.zip
