@@ -2,44 +2,42 @@
 
 set -e
 
-# define directory
-REPO="/Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-multiqc"
-mkdir -p "$REPO"
+REPO="/Volumes/T7/270918_quality_control_multiqc"
+DATA_DIR="$REPO/1_Datasets"
+FASTQC_DIR="$REPO/2_FASTQC"
+CUTADAPT_DIR="$REPO/3_CutAdapt_TrimShortReads"
+FASTQC_TRIMMED_DIR="$REPO/4_FASTQC_Trimmed"
+MULTIQC_DIR="$REPO/4_MultiQC"
 
-# define fastq dataset URLs and local target paths
-FASTQ_1_URL="https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_1.fastq"
-FASTQ_2_URL="https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq"
-FASTQ_1_LOCAL="$REPO/R1.fastq"
-FASTQ_2_LOCAL="$REPO/R2.fastq"
-FASTQ_1_TRIMMED="$REPO/R1_trimmed.fastq"
-FASTQ_2_TRIMMED="$REPO/R2_trimmed.fastq"
+mkdir -p "$REPO" "$DATA_DIR" "$FASTQC_DIR" "$CUTADAPT_DIR" "$FASTQC_TRIMMED_DIR" "$MULTIQC_DIR"
 
-# output files
-CUTADAPT_REPORT="$REPO/cutadapt_report.txt"
+R1_URL="https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_1.fastq"
+R2_URL="https://zenodo.org/record/61771/files/GSM461178_untreat_paired_subset_2.fastq"
+R1_LOCAL="$DATA_DIR/R1.fastq"
+R2_LOCAL="$DATA_DIR/R2.fastq"
+R1_TRIMMED="$DATA_DIR/R1_trimmed.fastq"
+R2_TRIMMED="$DATA_DIR/R2_trimmed.fastq"
+CUTADAPT_REPORT="$CUTADAPT_DIR/cutadapt_report.txt"
 
-# 1. download datasets
-curl -L -o "$FASTQ_1_LOCAL" "$FASTQ_1_URL"
-curl -L -o "$FASTQ_2_LOCAL" "$FASTQ_2_URL"
+echo "1. Downloading FASTQ paired-end short reads..."
+curl -L -C - --retry 5 --retry-connrefused -o "$R1_LOCAL" "$R1_URL"
+curl -L -C - --retry 5 --retry-connrefused -o "$R2_LOCAL" "$R2_URL"
 
-# 2. perform FastQC on raw paired-end reads
-fastqc -o "$REPO" "$FASTQ_1_LOCAL" "$FASTQ_2_LOCAL"
+echo "2. Performing FASTQC on the paired-end short reads..."
+fastqc -o "$FASTQC_DIR" "$R1_LOCAL" "$R2_LOCAL"
 
-# 3. trim and filter paired-end short reads with Cutadapt
+echo "3. Trimming and filtering the reads..."
 cutadapt \
     -q 20 \
     -m 20 \
-    -o "$FASTQ_1_TRIMMED" \
-    -p "$FASTQ_2_TRIMMED" \
-    "$FASTQ_1_LOCAL" "$FASTQ_2_LOCAL" > "$CUTADAPT_REPORT"
+    -o "$R1_TRIMMED" \
+    -p "$R2_TRIMMED" \
+    "$R1_LOCAL" "$R2_LOCAL" > "$CUTADAPT_REPORT"
 
-# 4. perform fastqc on trimmed reads
-fastqc -o "$REPO" "$FASTQ_1_TRIMMED" "$FASTQ_2_TRIMMED"
+echo "4. Performing FASTQC on the trimmed paired-end short reads..."
+fastqc -o "$FASTQC_TRIMMED_DIR" "$R1_TRIMMED" "$R2_TRIMMED"
 
-# 5. perform multiqc to aggregate all fastqc and cutadapt logs into a single report
-multiqc "$REPO" -o "$REPO" -n "multiqc_report.html"
+echo "5. Performing MultiQC to aggregate the FASTQCs..."
+multiqc "$FASTQC_TRIMMED_DIR" -o "$MULTIQC_DIR" -n "multiqc_report.html"
 
-# 6. clean up fastq, zip files
-rm -rf \
-    "$REPO/multiqc_report_data" \
-    "$REPO"/*.fastq \
-    "$REPO"/*.zip
+echo "Completed quality control on paired-end short reads!"
