@@ -47,11 +47,11 @@ with open(r1_path) as f1, open(r2_path) as f2, open(out_path, "w") as out:
         out.writelines(r1_lines + r2_lines)
 '
 
-echo "5. Assembling genome from short reads..."
+echo "5. Assembling genome from interleaved FASTQ..."
 velveth "$VELVET_DIR" 29 -fastq -shortPaired "$INTERLACED_MUTANT"
 velvetg "$VELVET_DIR" -clean yes
 
-echo "5. Combining paired-end FASTQ files into an interleaving file..."
+echo "5. Assembling genome from raw FASTQs...""
 spades.py \
     -1 "$R1_LOCAL" \
     -2 "$R2_LOCAL" \
