@@ -6,7 +6,7 @@ REPO="/Volumes/T7/270918_quality_control_nanoplot"
 DATA_DIR="$REPO/1_Dataset"
 NANOPLOT_DIR="$REPO/2_Nanoplot"
 
-mkdir "$REPO" "$DATA_DIR" "$NANOPLOT_DIR"
+mkdir -p "$REPO" "$DATA_DIR" "$NANOPLOT_DIR"
 
 FASTQ_URL="https://zenodo.org/records/5730295/files/m64011_190830_220126.Q20.subsample.fastq.gz"
 FASTQ_LOCAL="$DATA_DIR/m64011_190830_220126.Q20.subsample.fastq.gz"
@@ -26,4 +26,4 @@ NanoPlot \
 # plots bivariate format of the plots
 # N50 shows the minimumm reads length where 50% of the total bps is >= that length 
 
-echo "Completed quality control on long reads!"
+echo "Completed quality control on nanopore long reads!"
