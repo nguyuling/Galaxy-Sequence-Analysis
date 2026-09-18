@@ -88,7 +88,14 @@ Given a short reads and a nanopore long reads of sweet potato chloroplast, perfo
 4. Create index of the BAM file using **`samtools index`**.
 5. Polish the nanopore assembly FASTA with the BAM file using **`pilon`** to produce a polished assembly FASTA.
 6. Examining the stats of the assembly and the polished assembly FASTA using **`seqkit stats`**.
-![Genome-Assembly](/Users/nguyuling/Galaxy-Sequence-Analysis/img/assembly.png)
+
+<p align="center">
+    <img src="img/assembly.png" width="800">
+</p>
+
 7. Perform genome annotation using **`Prokka`** to examine the identified protein, nucleotides etc from the assembled genome.
 7. Perform genome annotation using **`JBrowse`** to visualize the annotation.
-![Genome-Annotation](/Users/nguyuling/Galaxy-Sequence-Analysis/img/annotation.png)
+
+<p align="center">
+    <img src="img/annotation.png" width="800">
+</p>
