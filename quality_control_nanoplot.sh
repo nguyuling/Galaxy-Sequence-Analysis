@@ -2,19 +2,23 @@
 
 set -e
 
-REPO="/Users/nguyuling/Galaxy-Sequence-Analysis/quality_control_nanoplot"
+REPO="/Volumes/T7/270918_quality_control_nanoplot"
+DATA_DIR="$REPO/1_Dataset"
+NANOPLOT_DIR="$REPO/2_Nanoplot"
+
+mkdir "$REPO" "$DATA_DIR" "$NANOPLOT_DIR"
+
 FASTQ_URL="https://zenodo.org/records/5730295/files/m64011_190830_220126.Q20.subsample.fastq.gz"
-FASTQ_LOCAL="$REPO/m64011_190830_220126.Q20.subsample.fastq.gz"
+FASTQ_LOCAL="$DATA_DIR/m64011_190830_220126.Q20.subsample.fastq.gz"
 
-# 1. download long reads summary
-curl -L -o "$FASTQ_LOCAL" "$FASTQ_URL"
+echo "1. Downloading FASTQ long reads..."
+curl -L -C - --retry 5 --retry-connrefused -o "$FASTQ_LOCAL" "$FASTQ_URL"
 
-# 2. perform nanoplot on the long reads
+echo "2. Perform nanoplot on the long reads..."
 NanoPlot \
     --fastq "$FASTQ_LOCAL" \
-    -o "$REPO" \
+    -o "$NANOPLOT_DIR" \
     --include-js embedded \
-    --no_static \
     --plots dot kde \
     --N50
 # include-js embedded to produce single html instead of separate ones for each chart
@@ -22,10 +26,4 @@ NanoPlot \
 # plots bivariate format of the plots
 # N50 shows the minimumm reads length where 50% of the total bps is >= that length 
 
-# 3. clean up fastq, zip and log files
-rm -rf \
-    "$REPO"/*.fastq.gz \
-    "$REPO"/*.log \
-    "$REPO"/*.zip
-
-find "$OUTPUT_DIR" -type f -name "*.html" ! -name "NanoPlot-report.html" -delete
+echo "Completed quality control on long reads!"
