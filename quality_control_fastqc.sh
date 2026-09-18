@@ -2,22 +2,31 @@
 
 set -e
 
-REPO="/Users/nguyuling/Galaxy-Sequence-Analysis/quality-control-fastqc"
+REPO="/Volumes/T7/270918_quality_control_fastqc"
+DATA_DIR="$REPO/1_Dataset"
+FASTQC_DIR="$REPO/2_FastQC"
+FASTQE_DIR="$REPO/3_FastQE"
+CUTADAPT_DIR="$REPO/4_CutAdapt_TrimShortRead"
+
 FASTQ_URL="https://zenodo.org/record/3977236/files/female_oral2.fastq-4143.gz"
-FASTQ_LOCAL="$REPO/female_oral2.fastq-4143.gz"
-FASTQ_TRIMMED="$REPO/A3_R1_trimmed.fastq"
-FASTQE="$REPO/A3_R1_fastqe.fastsanger"
-FASTQE_TRIMMED="$REPO/A3_R1_trimmed.fastsanger"
-FASTQ_CUTADAPT="$REPO/A3_R1_cutadapt_report.txt"
+FASTQ_LOCAL="$DATA_DIR/A3_R1.fastq-4143.gz"
+FASTQ_TRIMMED="$DATA_DIR/A3_R1_trimmed.fastq"
+FASTQE="$FASTQE_DIR/A3_R1_fastqe.fastsanger"
+FASTQE_TRIMMED="$FASTQE_DIR/A3_R1_trimmed.fastsanger"
+FASTQ_CUTADAPT="$CUTADAPT_DIR/A3_R1_cutadapt_report.txt"
 
-# 1. download dataset locally
-curl -L -o "$FASTQ_LOCAL" "$FASTQ_URL"
+mkdir -p "$REPO" "$DATA_DIR" "$FASTQC_DIR" "$FASTQE_DIR" "$CUTADAPT_DIR"
 
-# 2. perform qc on raw short reads
+echo "1. Downloading the FASTQ dataset..."
+curl -L -C - --retry 5 --retry-connrefused -o "$FASTQ_LOCAL" "$FASTQ_URL"
+
+echo "2. Performing FASTQC on the short read..."
+fastqc "$FASTQ_LOCAL" -o "$FASTQC_DIR"
+
+echo "3. Performing FASTQE on the short read..."
 fastqe "$FASTQ_LOCAL" --output "$FASTQE"
-fastqc "$FASTQ_LOCAL" --outdir="$REPO"
 
-# 3. trim and filter short reads
+echo "4. Trimming and filtering the short read..."
 cutadapt \
     -a CTGTCTCTTATACACATCT \
     -q 20 \
@@ -28,11 +37,7 @@ cutadapt \
 # -q quality cutoff for 3' end
 # -m minimum read length
 
-# 4. perform qc on trimmed reads
+echo "5. Performing FASTQE on the trimmed FASTQ..."
 fastqe "$FASTQ_TRIMMED" --output "$FASTQE_TRIMMED"
 
-# 5. clean up downloaded fastq
-rm -f \
-    "$REPO"/*.fastq \
-    "$REPO"/*.gz \
-    "$REPO"/*.zip
+echo "Completed quality control on single-end short read!"
